@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-&i1ux^pixa=&vcc)tyu7*cy^)4h=60i75$er^r!t@50oldogg(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['schuffle.up.railway.app', '127.0.0.1']
 
 
 # Application definition
@@ -85,6 +85,8 @@ CACHES = {
         'LOCATION': 'cache',
     }
 }
+
+print(env.get("NAME"), env.get("USER"), env.get("PASSWORD"), env.get("HOST"), env.get("PORT"))
 
 DATABASES = {
     'default': {
