@@ -89,11 +89,11 @@ CACHES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env["NAME"],
-        'USER': env["USER"],
-        'PASSWORD': env["PASSWORD"],
-        'HOST': env["HOST"],
-        'PORT': env["PORT"],
+        'NAME': env.get("NAME"),
+        'USER': env.get("USER"),
+        'PASSWORD': env.get("PASSWORD"),
+        'HOST': env.get("HOST", "localhost"),
+        'PORT': env.get("PORT", "5432"),
     }
 }
 
