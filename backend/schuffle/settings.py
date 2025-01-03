@@ -92,8 +92,8 @@ DATABASES = {
         'NAME': env.get("NAME"),
         'USER': env.get("USER"),
         'PASSWORD': env.get("PASSWORD"),
-        'HOST': env.get("HOST", "localhost"),
-        'PORT': env.get("PORT", "5432"),
+        'HOST': env.get("HOST"),
+        'PORT': env.get("PORT"),
     }
 }
 
