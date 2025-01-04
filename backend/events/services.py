@@ -27,7 +27,7 @@ def get_credentials():
         else:
             flow = Flow.from_client_secrets_file(
                 "credentials.json", SCOPES,
-                redirect_uri='schuffle.up.railway.app/auth/callback'
+                redirect_uri='https://schuffle.up.railway.app/api/auth/callback'
             )
             auth_url, _ = flow.authorization_url(prompt='consent')
             print(f'Please visit this URL to authorize the application: {auth_url}')

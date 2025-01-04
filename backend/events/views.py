@@ -17,7 +17,7 @@ def google_calendar_callback(request):
         flow = Flow.from_client_secrets_file(
             settings.GOOGLE_CLIENT_SECRETS_FILE, 
             scopes=['https://www.googleapis.com/auth/calendar'],
-            redirect_uri='https://schuffle.up.railway.app/auth/callback'
+            redirect_uri='https://schuffle.up.railway.app/api/auth/callback'
         )
         # Fetch the token from Google
         flow.fetch_token(code=code)
@@ -35,7 +35,7 @@ def google_auth(request):
     flow = Flow.from_client_secrets_file(
         settings.GOOGLE_CLIENT_SECRETS_FILE, 
         scopes=['https://www.googleapis.com/auth/calendar'],
-        redirect_uri='https://schuffle.up.railway.app/auth/callback'
+        redirect_uri='https://schuffle.up.railway.app/api/auth/callback'
     )
     
     auth_url, _ = flow.authorization_url(prompt='consent')
