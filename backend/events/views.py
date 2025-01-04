@@ -14,6 +14,7 @@ def google_calendar_callback(request):
 
     try:
         # Initialize the flow again to exchange the code for tokens
+        print(settings.GOOGLE_CLIENT_SECRETS_FILE)
         flow = Flow.from_client_secrets_file(
             settings.GOOGLE_CLIENT_SECRETS_FILE, 
             scopes=['https://www.googleapis.com/auth/calendar'],
