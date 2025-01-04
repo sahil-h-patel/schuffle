@@ -27,7 +27,7 @@ def get_credentials():
         else:
             flow = Flow.from_client_secrets_file(
                 "credentials.json", SCOPES,
-                redirect_uri='http://localhost:8080/auth/callback'
+                redirect_uri='schuffle.up.railway.app/auth/callback'
             )
             auth_url, _ = flow.authorization_url(prompt='consent')
             print(f'Please visit this URL to authorize the application: {auth_url}')
@@ -38,6 +38,7 @@ def get_credentials():
             cache.set("google_calendar_token", creds.to_json(), timeout=None)
     try:
         service = build("calendar", "v3", credentials=creds)
+        print("Success! Google Calendar service built.")
         return service
     except HttpError as error:
         print(f"An error occurred: {error}")
