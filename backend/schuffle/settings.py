@@ -24,11 +24,11 @@ env = dotenv_values(ENV_FILE_PATH)
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-&i1ux^pixa=&vcc)tyu7*cy^)4h=60i75$er^r!t@50oldogg('
 
+GOOGLE_CLIENT_SECRETS_FILE = env.get("GOOGLE_CLIENT_SECRETS_FILE_PATH")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['schuffle.up.railway.app', '127.0.0.1']
-
 
 # Application definition
 
