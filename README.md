@@ -29,21 +29,21 @@ Schuffle uses AI to prioritize tasks based on deadlines, priority, and progress 
 
 ## 📝 Task Checklist
 
-### Backend <progress value="3" max="5">32%</progress>
+### Backend ![60%](https://progress-bar.xyz/60) 
 - [x] Initialize Django project  
 - [x] Create models for tasks and events  
 - [x] Setup REST API with Django REST framework  
 - [ ] Integrate third-party APIs (Google Calendar, Notion)  
 - [ ] Setup authentication (JWT)  
 
-### Frontend <progress value="1" max="5"></progress>
+### Frontend ![20%](https://progress-bar.xyz/20) 
 - [x] Setup Vite + React project  
 - [ ] Design home page UI  
 - [ ] Connect to backend API  
 - [ ] Add task creation and editing  
 - [ ] Implement scheduling feature  
 
-### Deployment <progress value="2" max="3"></progress>
+### Deployment ![66%](https://progress-bar.xyz/20) 
 - [x] Deploy backend on Railway  
 - [x] Connect backend to frontend  
 - [ ] Deploy frontend on Vercel  
