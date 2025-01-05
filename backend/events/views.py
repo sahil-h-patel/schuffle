@@ -38,8 +38,12 @@ def google_calendar_callback(request):
 
 
 def google_auth(request):
+
+    client_secrets_json = base64.b64decode(os.getenv("GOOGLE_CLIENT_SECRETS_JSON_BASE64")).decode("utf-8")
+    client_config = json.loads(client_secrets_json)
+
     flow = Flow.from_client_secrets_file(
-        settings.GOOGLE_CLIENT_SECRETS_FILE, 
+        client_config, 
         scopes=['https://www.googleapis.com/auth/calendar'],
         redirect_uri='https://schuffle.up.railway.app/api/auth/callback'
     )
