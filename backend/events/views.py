@@ -49,6 +49,9 @@ def google_auth(request):
         redirect_uri='https://schuffle.up.railway.app/api/auth/callback'
     )
         
-    return redirect(flow.authorization_url(prompt='consent'))
-
+    # Generate the authorization URL and state
+    auth_url, state = flow.authorization_url(prompt='consent')
+    
+    # Return the authorization URL to the frontend
+    return JsonResponse({'authUrl': auth_url})
 
