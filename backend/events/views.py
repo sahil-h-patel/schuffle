@@ -20,7 +20,7 @@ def google_calendar_callback(request):
 
     try:
         # Initialize the flow again to exchange the code for tokens
-        flow = Flow.from_client_secrets_file(
+        flow = Flow.from_client_config(
             client_config, 
             scopes=['https://www.googleapis.com/auth/calendar'],
             redirect_uri='https://schuffle.up.railway.app/api/auth/callback'
@@ -41,8 +41,8 @@ def google_auth(request):
 
     client_secrets_json = base64.b64decode(os.getenv("GOOGLE_CLIENT_SECRETS_JSON_BASE64")).decode("utf-8")
     client_config = json.loads(client_secrets_json)
-
-    flow = Flow.from_client_secrets_file(
+    
+    flow = Flow.from_client_config(
         client_config, 
         scopes=['https://www.googleapis.com/auth/calendar'],
         redirect_uri='https://schuffle.up.railway.app/api/auth/callback'
