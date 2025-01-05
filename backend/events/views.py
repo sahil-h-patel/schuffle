@@ -1,4 +1,5 @@
 import base64
+from django.shortcuts import redirect
 from google_auth_oauthlib.flow import Flow
 from django.conf import settings
 from django.http import JsonResponse, HttpResponse
@@ -41,14 +42,13 @@ def google_auth(request):
 
     client_secrets_json = base64.b64decode(os.getenv("GOOGLE_CLIENT_SECRETS_JSON_BASE64")).decode("utf-8")
     client_config = json.loads(client_secrets_json)
-    
+
     flow = Flow.from_client_config(
         client_config, 
         scopes=['https://www.googleapis.com/auth/calendar'],
         redirect_uri='https://schuffle.up.railway.app/api/auth/callback'
     )
-    
-    auth_url, _ = flow.authorization_url(prompt='consent')
-    
-    return JsonResponse({'authUrl': auth_url})
+        
+    return redirect(flow.authorization_url(prompt='consent'))
+
 
