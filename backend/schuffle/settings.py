@@ -102,6 +102,8 @@ DATABASES = {
 
 CORS_ALLOWED_ORIGINS = [
     'https://schuffle.vercel.app',  # Replace with your frontend domain
+    'https://schuffle.up.railway.app',
+
 ]
 
 # Password validation
