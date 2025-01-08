@@ -92,7 +92,7 @@ CACHES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env.get("PGDATABASE"),
+        'NAME': env.get("DATABASE_NAME"),
         'USER': env.get("PGUSER"),
         'PASSWORD': env.get("PGPASSWORD"),
         'HOST': env.get("PGHOST"),
