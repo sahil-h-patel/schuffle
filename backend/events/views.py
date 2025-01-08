@@ -26,12 +26,14 @@ def google_calendar_callback(request):
             scopes=['https://www.googleapis.com/auth/calendar'],
             redirect_uri='https://schuffle.up.railway.app/api/auth/callback'
         )
-        print(code)
         # Fetch the token from Google
         flow.fetch_token(code=code)
         
         creds = flow.credentials
         # Cache the credentials
+        cache.get('google_calendar_token')
+        print('Got token')
+
         cache.set('google_calendar_token', creds.to_json(), timeout=None)  # Cache token indefinitely
         
         return JsonResponse({'message': 'Google Calendar login successful'})
