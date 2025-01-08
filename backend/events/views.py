@@ -31,10 +31,10 @@ def google_calendar_callback(request):
         
         creds = flow.credentials
         # Cache the credentials
+        print('test')
         cache.get('google_calendar_token')
-        print('Got token')
 
-        cache.set('google_calendar_token', creds.to_json(), timeout=None)  # Cache token indefinitely
+        cache.add('google_calendar_token', creds.to_json(), timeout=None)  # Cache token indefinitely
         
         return JsonResponse({'message': 'Google Calendar login successful'})
     except Exception as e:
@@ -57,4 +57,5 @@ def google_auth(request):
     
     # Return the authorization URL to the frontend
     return JsonResponse({'authUrl': auth_url})
+
 
