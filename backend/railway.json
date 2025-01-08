@@ -1,0 +1,9 @@
+{
+    "builds": [
+      {
+        "use": "@railway/build-docker",
+        "dockerfile": "./Dockerfile"
+      }
+    ]
+  }
+  
