@@ -30,6 +30,7 @@ def google_calendar_callback(request):
         flow.fetch_token(code=code)
         
         creds = flow.credentials
+        print(f"Creds: {creds.to_json()}")
         # Cache the credentials
         cache.add('google_calendar_token', creds.to_json(), timeout=None)  # Cache token indefinitely   
         return JsonResponse({'message': 'Google Calendar login successful'})
