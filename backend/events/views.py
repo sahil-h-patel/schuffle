@@ -54,5 +54,3 @@ def google_auth(request):
     
     # Return the authorization URL to the frontend
     return JsonResponse({'authUrl': auth_url})
-
-

@@ -92,11 +92,11 @@ CACHES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env.get("NAME"),
-        'USER': env.get("USER"),
-        'PASSWORD': env.get("PASSWORD"),
-        'HOST': env.get("HOST"),
-        'PORT': env.get("PORT"),
+        'NAME': env.get("PGDATABASE"),
+        'USER': env.get("PGUSER"),
+        'PASSWORD': env.get("PGPASSWORD"),
+        'HOST': env.get("PGHOST"),
+        'PORT': env.get("PGPORT"),
     }
 }
 
@@ -123,7 +123,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
