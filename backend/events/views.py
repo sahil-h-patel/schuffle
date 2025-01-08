@@ -31,11 +31,7 @@ def google_calendar_callback(request):
         
         creds = flow.credentials
         # Cache the credentials
-        print('test')
-        cache.get('google_calendar_token')
-
-        cache.add('google_calendar_token', creds.to_json(), timeout=None)  # Cache token indefinitely
-        
+        cache.add('google_calendar_token', creds.to_json(), timeout=None)  # Cache token indefinitely   
         return JsonResponse({'message': 'Google Calendar login successful'})
     except Exception as e:
         return HttpResponse(f"An error occurred: {str(e)}", status=500)
