@@ -1,39 +1,36 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+@import "tailwindcss";
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: true;
+  prefersdark: false;
+  color-scheme: "dark";
+  --color-base-100: oklch(33.62% 0.0232 268.2);
+  --color-base-200: oklch(28.9% 0.0232 268.2);
+  --color-base-300: oklch(28.8% 0.0232 268.2);
+  --color-base-content: oklch(97.807% 0.029 256.847);
+  --color-primary: oklch(77.37% 0.1581 262.91);
+  --color-primary-content: oklch(16% 0.1249 213.94);
+  --color-secondary: oklch(70% 0.015 286.067);
+  --color-secondary-content: oklch(21% 0.006 285.885);
+  --color-accent:  oklch(77.64% 0.2296 360);
+  --color-accent-content: oklch(27% 0.105 12.094);
+  --color-neutral: oklch(44% 0.017 285.786);
+  --color-neutral-content: oklch(92% 0.004 286.32);
+  --color-info: oklch(86.078% 0.142 206.182);
+  --color-info-content: oklch(17.215% 0.028 206.182);
+  --color-success: oklch(86.171% 0.142 166.534);
+  --color-success-content: oklch(17.234% 0.028 166.534);
+  --color-warning: oklch(86.163% 0.142 94.818);
+  --color-warning-content: oklch(17.232% 0.028 94.818);
+  --color-error: oklch(82.418% 0.099 33.756);
+  --color-error-content: oklch(16.483% 0.019 33.756);
+  --radius-selector: 2rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
 }

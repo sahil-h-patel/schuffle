@@ -1,17 +1,16 @@
-// import { useState } from 'react'
-import './App.css'
-import { Calendar, Navbar, Sidebar } from "./components";
+import AdminRoutes from '@routes/AdminRoutes'
+import AuthRoutes from '@routes/AuthRoutes'
+import MainRoutes from '@routes/MainRoutes'
+import { Routes } from 'react-router';
 
 function App() {
-  // const [count, setCount] = useState(0)
-  
   return (
-    <> 
-      <Navbar></ Navbar>
-      <Sidebar></Sidebar>
-      <Calendar></Calendar>
-    </>
-  )
+    <Routes>
+      {AdminRoutes}
+      {AuthRoutes}
+      {MainRoutes}
+    </Routes>
+  );
 }
 
-export default App
+export default App;

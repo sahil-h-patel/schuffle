@@ -1,56 +1,75 @@
-import base64
-from django.shortcuts import redirect
-from google_auth_oauthlib.flow import Flow
-from django.conf import settings
-from django.http import JsonResponse, HttpResponse
-from google_auth_oauthlib.flow import Flow
-from google.auth.transport.requests import Request
-from django.core.cache import cache
 import os
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 import json
+import requests
 
-def google_calendar_callback(request):
-    # Retrieve the authorization code from the GET parameters
-    code = request.GET.get('code')
+# Retrieve client credentials from environment variables
+CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID')
+CLIENT_SECRET = os.getenv('GOOGLE_CLIENT_SECRET')
+REDIRECT_URI = os.getenv('GOOGLE_REDIRECT_URI')
 
-    if not code:
-        return HttpResponse("Authorization code missing!", status=400)
-    
-    client_secrets_json = base64.b64decode(os.getenv("GOOGLE_CLIENT_SECRETS_JSON_BASE64")).decode("utf-8")
-    client_config = json.loads(client_secrets_json)
-
-    try:
-        # Initialize the flow again to exchange the code for tokens
-        flow = Flow.from_client_config(
-            client_config, 
-            scopes=['https://www.googleapis.com/auth/calendar'],
-            redirect_uri='https://schuffle.up.railway.app/api/auth/callback'
-        )
-        # Fetch the token from Google
-        flow.fetch_token(code=code)
-        
-        creds = flow.credentials
-        print(f"Creds: {creds.to_json()}")
-        # Cache the credentials
-        cache.add('google_calendar_token', creds.to_json(), timeout=None)  # Cache token indefinitely   
-        return JsonResponse({'message': 'Google Calendar login successful'})
-    except Exception as e:
-        return HttpResponse(f"An error occurred: {str(e)}", status=500)
-
-
+@csrf_exempt
 def google_auth(request):
+    try:
+        # Check the content type
+        if request.content_type != 'application/json':
+            return JsonResponse({'error': 'Expected JSON request body'}, status=400)
 
-    client_secrets_json = base64.b64decode(os.getenv("GOOGLE_CLIENT_SECRETS_JSON_BASE64")).decode("utf-8")
-    client_config = json.loads(client_secrets_json)
+        # Try to load the request body as JSON
+        data = json.loads(request.body.decode('utf-8'))  # decode to handle byte-string
 
-    flow = Flow.from_client_config(
-        client_config, 
-        scopes=['https://www.googleapis.com/auth/calendar'],
-        redirect_uri='https://schuffle.up.railway.app/api/auth/callback'
-    )
-        
-    # Generate the authorization URL and state
-    auth_url, state = flow.authorization_url(prompt='consent')
-    
-    # Return the authorization URL to the frontend
-    return JsonResponse({'authUrl': auth_url})
+        # Check if 'code' is present in the request
+        code = data.get('code')
+        if not code:
+            return JsonResponse({'error': 'Code not provided'}, status=400)
+
+        # Continue with your Google OAuth logic
+        return JsonResponse({'message': 'Code received successfully', 'code': code})
+
+    except json.JSONDecodeError:
+        return JsonResponse({'error': 'Invalid JSON format'}, status=400)
+
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=400)
+
+
+def exchange_code_for_tokens(request):
+    if request.method == 'POST':
+        try:
+            # Get the authorization code from the request
+            data = json.loads(request.body)
+            code = data.get('code')
+            
+            if not code:
+                return JsonResponse({'error': 'Code not provided'}, status=400)
+
+            # Set up the token exchange request parameters
+            token_url = "https://oauth2.googleapis.com/token"
+            client_id = os.getenv("GOOGLE_CLIENT_ID")
+            client_secret = os.getenv("GOOGLE_CLIENT_SECRET")
+            redirect_uri = os.getenv("REDIRECT_URI")
+
+            # Prepare the data for the token request
+            token_data = {
+                'code': code,
+                'client_id': client_id,
+                'client_secret': client_secret,
+                'redirect_uri': redirect_uri,
+                'grant_type': 'authorization_code',
+            }
+
+            # Send POST request to exchange the code for tokens
+            response = requests.post(token_url, data=token_data)
+            response_data = response.json()
+
+            if response.status_code != 200:
+                return JsonResponse({'error': response_data.get('error', 'Unknown error')}, status=400)
+
+            # Return the tokens to the frontend
+            return JsonResponse(response_data)
+
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=400)
+
+    return JsonResponse({'error': 'Invalid request method'}, status=405)

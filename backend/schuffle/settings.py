@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-&i1ux^pixa=&vcc)tyu7*cy^)4h=60i75$er^r!t@50oldogg(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['schuffle.up.railway.app', '127.0.0.1']
+ALLOWED_HOSTS = ['schuffle.up.railway.app', '127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -103,8 +103,11 @@ DATABASES = {
 CORS_ALLOWED_ORIGINS = [
     'https://schuffle.vercel.app',  # Replace with your frontend domain
     'https://schuffle.up.railway.app',
+    'http://localhost:5173'
 
 ]
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None  # Disable COOP
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
