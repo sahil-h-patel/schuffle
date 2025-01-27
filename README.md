@@ -17,11 +17,11 @@ Schuffle uses AI to prioritize tasks based on deadlines, priority, and progress 
 - [x] Setup backend with Django  
 - [x] Create API endpoints for tasks and events  
 - [x] Integrate Google Calendar API  
-- [x] Integrate Notion API  
+- [ ] Integrate Notion API  
 - [ ] Build React frontend with Vite  
 - [ ] Design task prioritization algorithm  
-- [X] Deploy backend on Railway  
-- [X] Deploy frontend on Vercel  
+- [ ] Deploy backend on Railway  
+- [ ] Deploy frontend on Vercel  
 - [ ] Add user authentication  
 - [ ] Implement AI-based task prioritization  
 - [ ] Polish UI/UX design  
@@ -29,23 +29,23 @@ Schuffle uses AI to prioritize tasks based on deadlines, priority, and progress 
 
 ## 📝 Task Checklist
 
-### Backend ![60%](https://progress-bar.xyz/60) 
+### Backend ![40%](https://progress-bar.xyz/40) 
 - [x] Initialize Django project  
-- [x] Create models for tasks and events  
+- [ ] Create models for tasks and events  
 - [x] Setup REST API with Django REST framework  
 - [ ] Integrate third-party APIs (Google Calendar, Notion)  
 - [ ] Setup authentication (JWT)  
 
-### Frontend ![20%](https://progress-bar.xyz/20) 
+### Frontend ![40%](https://progress-bar.xyz/40) 
 - [x] Setup Vite + React project  
-- [ ] Design home page UI  
+- [X] Design home page UI  
 - [ ] Connect to backend API  
 - [ ] Add task creation and editing  
 - [ ] Implement scheduling feature  
 
-### Deployment ![66%](https://progress-bar.xyz/20) 
-- [x] Deploy backend on Railway  
-- [x] Connect backend to frontend  
+### Deployment ![0%](https://progress-bar.xyz/0) 
+- [ ] Deploy backend on Railway  
+- [ ] Connect backend to frontend  
 - [ ] Deploy frontend on Vercel  
 
 
