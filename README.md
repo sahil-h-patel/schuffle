@@ -1,7 +1,7 @@
-# <img src="https://i.imgur.com/fE5f8yi.png" width="60" style="vertical-align: middle; margin-right: 10px;"> **Schuffle** - Task Management App
+# <img src="https://i.imgur.com/fE5f8yi.png" width="60" style="vertical-align: middle; margin-right: 10px;"> **Shuffle** - Task Management App
 A web app taking a twist on the traditional organizational methods optimizing tasks and events on your calendar to effectively optimze *your* time. 
 
-Schuffle uses AI to prioritize tasks based on deadlines, priority, and progress percentage. It integrates with Google Calendar and Notion for seamless task synchronization.
+Shuffle uses AI to prioritize tasks based on deadlines, priority, and progress percentage. It integrates with Google Calendar and Notion for seamless task synchronization.
 
 ## ⭐ **Features**
 <ul>
