@@ -103,12 +103,11 @@ DATABASES = {
 CORS_ALLOWED_ORIGINS = [
     'https://schuffle.vercel.app',  # Replace with your frontend domain
     'https://schuffle.up.railway.app',
-    'http://localhost:5173'
-
+    'http://localhost:5173',
+    'http://localhost:8000'
 ]
 
-SECURE_CROSS_ORIGIN_OPENER_POLICY = None  # Disable COOP
-
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 

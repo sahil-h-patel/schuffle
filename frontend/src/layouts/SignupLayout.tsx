@@ -1,5 +1,4 @@
 
-import '../App.css'
 import Footer from '@components/Footer'
 import { Outlet, useLocation } from 'react-router';
 
@@ -23,7 +22,9 @@ function SignupLayout() {
         {steps.map((step, index) => (
           <li
             key={index}
-            className={`step ${index <= currentStep ? 'step-primary' : ''}`}
+            className={`step transition-all duration-300 ease-in-out ${
+              index <= currentStep ? 'step-primary' : 'opacity-50'
+            } ${index === currentStep ? 'bg-gradient-to-r from-primary-500 to-primary-300' : ''}`} 
           >
             {step.label}
           </li>
@@ -32,7 +33,7 @@ function SignupLayout() {
 
       {/* Hero */}
       <div className="flex flex-grow flex-col items-center m-auto justify-center">
-        <div className="hero bg-base-100 rounded-2xl">
+        <div className="hero bg-base-100 rounded-2xl shadow-md border border-base-300 b-2">
           <div className="hero-content flex-row-reverse">
             <Outlet/>
           </div>

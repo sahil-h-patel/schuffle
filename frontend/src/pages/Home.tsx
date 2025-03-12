@@ -1,10 +1,19 @@
-import '../App.css'
+import { useCalendarView } from '@context/CalendarViewContext';
+import Day from '@calendar/Day'
+import Month from '@calendar/Month'
+import Week from '@calendar/Week'
 
-function Home() {
+
+function Home (){
+  const { calendarView } = useCalendarView();
 
   return (
-    <h1>This is the Home Section!</h1>
+    <div className="flex flex-grow overflow-hidden">
+      {calendarView === 'month' && <Month/>}
+      {calendarView === 'week' && <Week/>}
+      {calendarView === 'day' && <Day/>}
+    </div>
   );
-}
+};
 
 export default Home;
